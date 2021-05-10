@@ -1,0 +1,54 @@
+public class Plant 
+{
+    private String plantName;
+    private String moistureLevel;
+    private int specialNeeds;
+
+    public void setNewMoistureLevel(int moisturelevel)
+    {
+        this.moistureLevel = moistureLevelString(moisturelevel);
+    }
+
+    public String moistureLevelString (int moistureLevelStringNumber)
+    {
+        switch (moistureLevelStringNumber)
+        {
+            case 1:
+                return "This plant prefers very dry soil";
+            case 2:
+                return "This plant prefers dry soil";
+            case 3:
+                return "This plant prefers medium wet soil";
+            case 4:
+                return "This plant prefers wet soil";
+            case 5:
+                return "This plant prefers very wet soil";
+            default:
+                System.out.println("That moisture level does not exist.");
+                System.exit(0);
+                return "Error";
+        }
+    }
+
+    public void setNewSpecialNeeds(int newSpecialNeeds)
+    {
+        specialNeeds = specialNeedsString(newSpecialNeeds);
+    }
+
+    public String specialNeedsString(int specialNeedsStringNumber)
+    {
+        switch (specialNeedsStringNumber)
+        {
+            case 1:
+                return "Give more frequent small amounts of water."; 
+            case 2:
+                return "Allow soil to dry out in between watering";
+            case 3:
+                return "Give less frequent one amount of water.";
+            default:
+                System.out.println("That number does not exist.");
+                System.exit(0);
+                return "Error";
+        }
+    }
+}
