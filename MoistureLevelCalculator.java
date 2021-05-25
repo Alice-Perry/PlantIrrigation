@@ -1,6 +1,8 @@
-public class MoisturelevelCalculator
+public class MoistureLevelCalculator
 {
     double multiplier;
+    int amountOfWaterToGive;
+    int hoursBeforeWateringAgain;
 
     public WaterNeeds moistureLevelCalculator(Plant plant){
         switch (plant.moistureLevel)
@@ -18,7 +20,7 @@ public class MoisturelevelCalculator
                 multiplier = 4;
 
             case 4:
-                mountOfWaterToGive = 50;
+                amountOfWaterToGive = 50;
                 multiplier = 3;
 
             case 5:
@@ -26,14 +28,14 @@ public class MoisturelevelCalculator
                 multiplier = 2.3;
 
             default:
-
         }
+
 
         hoursBeforeWateringAgain = GetHoursBeforeWatering(plant.specialNeeds);
         if (hoursBeforeWateringAgain > 48) {
-            amountOfWaterToGive*=multiplier;
+            amountOfWaterToGive *= multiplier;
         }
         
-        return new WaterNeeds(amountOfWaterToGive,hoursBeforeWateringAgain);
+        return new WaterNeeds(amountOfWaterToGive, hoursBeforeWateringAgain);
     }
 }
