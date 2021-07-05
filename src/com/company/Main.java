@@ -10,12 +10,13 @@ public class Main {
 
         PlantFactory factory = new PlantFactory();
         Plant plant = factory.createNewPlant();
-        WaterGiver watergiver = new WaterGiver(plant);
-        watergiver.waterGiverTimer();
+        ListOfPlants listOfPlants = new ListOfPlants();
+        listOfPlants.getArrayListOfPlants();
+        listOfPlants.displayArrayListOfPlants();
+        //WaterGiver watergiver = new WaterGiver(plant);
+        //watergiver.waterGiverTimer();
 
-        //voor iedere 20 seconden if moistmeter = check plant.waterlevel
-        //    loopje elke 10 sec kijkt ie of het moisturelevel
-        //        loopje met sleep.
+
         System.out.println(plant.displayPlantDetails());
     }
 

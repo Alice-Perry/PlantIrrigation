@@ -23,7 +23,6 @@ public class WaterGiver {
                else{
                    System.out.println("The plant will now be watered.");
                    timer.cancel();
-
                }
                decreaser--;
 
