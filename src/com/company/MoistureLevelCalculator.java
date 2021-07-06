@@ -10,18 +10,23 @@ public class MoistureLevelCalculator {
             case 1:
                 amountOfWaterToGive = 1;
                 multiplier = 10;
+                break;
             case 2:
                 amountOfWaterToGive = 5;
                 multiplier = 5;
+                break;
             case 3:
                 amountOfWaterToGive = 25;
                 multiplier = 4;
+                break;
             case 4:
                 amountOfWaterToGive = 50;
                 multiplier = 3;
+                break;
             case 5:
                 amountOfWaterToGive = 150;
                 multiplier = 2.3;
+                break;
             default:
                 System.exit(0);
         }

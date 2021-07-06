@@ -11,13 +11,16 @@ public class PlantFactory {
    //     this. moistureLevelCalculator = moistureLevelCalculator;
     //    }
 
-    public Plant createNewPlant() {
+    public Plant createNewPlant(ListOfPlants listOfPlants) {
         Scanner scanner = new Scanner(System.in);
         String plantType = getPlantType(scanner);
+        Plant plant = listOfPlants.findPlant(plantType);
+        if (plant !=null) {
+            return plant;
+        }
+
         int moistureLevel = getMoistureLevel(scanner);
         int specialNeeds = getSpecialNeeds(scanner);
-
-
 
         return new Plant(plantType, moistureLevel, specialNeeds);
     }

@@ -6,13 +6,14 @@ public class Plant {
     private int specialNeeds;
     private int measuredMoistInPercent; //= moistMeter.getMeasuredMoistInProcent();
 
-
-
-
     public Plant (String plantType, int moistureLevel, int specialNeeds) {
         this.plantType = plantType;
         this.moistureLevel = moistureLevel;
         this.specialNeeds = specialNeeds;
+    }
+
+    public String getPlantType() {
+        return plantType;
     }
 
     public void setMoistureLevel(int moistureLevel) {

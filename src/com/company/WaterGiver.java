@@ -17,11 +17,13 @@ public class WaterGiver {
             private int minimum = moistMeter.getMinimumMoistInPercent();
 
             public void run() {
-               if (decreaser > minimum) {
+                //FrequencyCalculator frequencyCalculator = frequencyCalculator.getAmountOfWaterToGive();
+                if (decreaser > minimum) {
                    System.out.println("The moist percentage of your plant soil is " + decreaser + "%.");
                }
                else{
                    System.out.println("The plant will now be watered.");
+                   //System.out.println("Next watering moment wil be in " + frequencyCalculator.getAmountOfWaterToGive() + " hours.");
                    timer.cancel();
                }
                decreaser--;
