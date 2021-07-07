@@ -4,7 +4,7 @@ public class Plant {
     private String plantType;
     private int moistureLevel;
     private int specialNeeds;
-    private int measuredMoistInPercent; //= moistMeter.getMeasuredMoistInProcent();
+    private int measuredMoistInPercent;
 
     public Plant (String plantType, int moistureLevel, int specialNeeds) {
         this.plantType = plantType;
@@ -61,14 +61,21 @@ public class Plant {
         }
     }
 
-    public String displayPlantDetails() {
+    public int getMeasuredMoistInPercent(MoistMeter moistMeter){
+        measuredMoistInPercent= moistMeter.getMeasuredMoistInPercent();
+        return measuredMoistInPercent;
+    }
+
+    public String displayPlantDetails(FrequencyCalculator frequencyCalculator) {
         return
                 "\nPLANT\n" +
                 "Name: " + plantType + ".\n" +
                 "Moisture level: " + moistureLevelToString(moistureLevel) +".\n" +
                 "Special needs: " + specialNeedsToString(specialNeeds) + ".\n" +
-                "Moist level of the soil in percent: " + measuredMoistInPercent + ".\n"
-        ;
+                "Percentage of moist in your plant soil is " + measuredMoistInPercent + ".\n" +
+                "Your plant will be watered every " + frequencyCalculator.getHoursBeforeWateringAgain() + " hours." +
+                "The water container needs a refill in "  + "hours."
+                ;
 
     }
     /*public void setNewMoistureLevel(int moistureLevel) {

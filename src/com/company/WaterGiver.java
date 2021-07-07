@@ -4,6 +4,7 @@ import java.util.TimerTask;
 
 public class WaterGiver {
     Plant plant;
+    int waterRefill;
     MoistMeter moistMeter = new MoistMeter();
 
     public WaterGiver(Plant plant) {
@@ -27,9 +28,12 @@ public class WaterGiver {
                    timer.cancel();
                }
                decreaser--;
-
            }
        };
         timer.scheduleAtFixedRate(task, 0, 1000);
     }
+
+    //public int getWaterRefill(){
+
+    //}
 }

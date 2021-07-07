@@ -5,37 +5,40 @@ public class MoistureLevelCalculator {
     int amountOfWaterToGive;
     int hoursBeforeWateringAgain;
 
-    public MoistureLevelCalculator (Plant plant) {
+    public int frequencyGetter(FrequencyCalculator frequencyCalculator){
+        hoursBeforeWateringAgain = frequencyCalculator.getHoursBeforeWateringAgain();
+        return  hoursBeforeWateringAgain;
+    }
+    public double getAmountOfWaterToGive (Plant plant) {
         switch (plant.getMoistureLevel()) {
-            case 1:
+            case 1 -> {
                 amountOfWaterToGive = 1;
                 multiplier = 10;
-                break;
-            case 2:
+            }
+            case 2 -> {
                 amountOfWaterToGive = 5;
                 multiplier = 5;
-                break;
-            case 3:
+            }
+            case 3 -> {
                 amountOfWaterToGive = 25;
                 multiplier = 4;
-                break;
-            case 4:
+            }
+            case 4 -> {
                 amountOfWaterToGive = 50;
                 multiplier = 3;
-                break;
-            case 5:
+            }
+            case 5 -> {
                 amountOfWaterToGive = 150;
                 multiplier = 2.3;
-                break;
-            default:
-                System.exit(0);
+            }
+            default -> System.exit(0);
         }
-        if (hoursBeforeWateringAgain > 48) {
-            amountOfWaterToGive *= multiplier;
-    }
-    //public int getCalculatedMoistureLevel() {
-      //  int hoursBeforeWateringAgain = PlantFactory.frequencyCalculator;
 
+        if (hoursBeforeWateringAgain > 24) {
+            return amountOfWaterToGive *= multiplier;
+        }
+        else {
+            return amountOfWaterToGive;
+        }
     }
-
 }

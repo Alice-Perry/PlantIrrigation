@@ -1,29 +1,21 @@
 package com.company;
 
 public class FrequencyCalculator {
-    private double amountOfWaterToGive;
-    private double hoursBeforeWateringAgain;
+    private int hoursBeforeWateringAgain;
 
-    public FrequencyCalculator(double amount, double hours) {
-        amountOfWaterToGive = amount;
-        hoursBeforeWateringAgain = hours;
+    public FrequencyCalculator(Plant plant) {
+        if(plant.getSpecialNeeds() == 1) {
+            hoursBeforeWateringAgain = 6;
+        }
+        else if (plant.getSpecialNeeds() == 2) {
+            hoursBeforeWateringAgain = 24;
+        }
+        else {
+            hoursBeforeWateringAgain = 48;
+        }
     }
 
-    public void setAmountOfWaterToGive(int amount){
-        amountOfWaterToGive = amount;
-    }
-
-    public double getAmountOfWaterToGive(){
-        return amountOfWaterToGive;
-    }
-
-    public void setHoursBeforeWateringAgain(int hours){
-        hoursBeforeWateringAgain = hours;
-    }
-    public double getHoursBeforeWateringAgain(){
+       public int getHoursBeforeWateringAgain(){
         return hoursBeforeWateringAgain;
     }
-
-    //return new FrequencyCalculator(amountOfWaterToGive, hoursBeforeWateringAgain);
-
 }
