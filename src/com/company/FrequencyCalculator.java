@@ -2,8 +2,8 @@ package com.company;
 
 public class FrequencyCalculator {
     private int hoursBeforeWateringAgain;
-    private MoistMeter moistmeter;
-    private Plant plant;
+    //private MoistLevelDecreaser moistmeter;
+
 
     public FrequencyCalculator(Plant plant) {
         if(plant.getSpecialNeeds() == 1) {
@@ -17,19 +17,20 @@ public class FrequencyCalculator {
         }
     }
 
-       public int getHoursBeforeWateringAgain(){
+    public int getHoursBeforeWateringAgain(){
         return hoursBeforeWateringAgain;
     }
 
-    public  boolean minMoistCalculator(MoistureLevelCalculator moistureLevelCalculator) {
-        int minimum = moistureLevelCalculator.getMeasuresMoistInPercent(moistmeter);
-        boolean turnWaterOn;
-        if (moistureLevelCalculator.getMinMoistLevel(plant) == minimum) {
-            return turnWaterOn = true;
-        }
-        else{
-            return turnWaterOn = false;
-        }
-    }
+
+//    public  boolean minMoistCalculator(MoistureLevelCalculator moistureLevelCalculator) {
+//        int minimum = moistureLevelCalculator.getMeasuresMoistInPercent(moistmeter);
+//        boolean turnWaterOn;
+//        if (moistureLevelCalculator.getMinMoistLevel(plant) == minimum) {
+//            return turnWaterOn = true;
+//        }
+//        else{
+//            return turnWaterOn = false;
+//        }
+//    }
 
 }

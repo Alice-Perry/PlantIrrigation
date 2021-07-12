@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class PlantFactory {
     FrequencyCalculator frequencyCalculator;
-    MoistureLevelCalculator moistureLevelCalculator;
+    AmountOfWaterCalculator amountOfWaterCalculator;
 
    // public PlantFactory(FrequencyCalculator frequencyCalculator, MoistureLevelCalculator moistureLevelCalculator){
     //    this.frequencyCalculator = frequencyCalculator;

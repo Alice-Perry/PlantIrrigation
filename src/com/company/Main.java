@@ -9,13 +9,13 @@ public class Main {
         ListOfPlants listOfPlants = new ListOfPlants();
         Plant plant = factory.createNewPlant(listOfPlants);
 
-        FrequencyCalculator frequencyCalculator = new FrequencyCalculator(plant);
-        MoistureLevelCalculator moistureLevelCalculator = new MoistureLevelCalculator();
+        //FrequencyCalculator frequencyCalculator = new FrequencyCalculator(plant);
+        AmountOfWaterCalculator amountOfWaterCalculator = new AmountOfWaterCalculator();
 
-        WaterGiver watergiver = new WaterGiver(plant);
+        WaterGiver watergiver = new WaterGiver();
 
-        frequencyCalculator.getHoursBeforeWateringAgain();
-        moistureLevelCalculator.getAmountOfWaterToGive(plant);
+        //frequencyCalculator.getHoursBeforeWateringAgain();
+        amountOfWaterCalculator.getAmountOfWaterToGive(plant);
 
         listOfPlants.getListOfPlants();
         listOfPlants.findPlant(plant.getPlantType());
@@ -24,7 +24,7 @@ public class Main {
         watergiver.waterGiverTimer();
 
 
-        System.out.println(plant.displayPlantDetails(frequencyCalculator));
+        System.out.println(plant.displayPlantDetails());
     }
 
 }
