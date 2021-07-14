@@ -1,18 +1,15 @@
 package com.company;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+
 public class Plant {
     private String plantType;
     private int moistureLevel;
     private int specialNeeds;
+    private LocalDateTime lastTimePlantWasWatered = LocalDateTime.now();
 
-    private int amountOfWaterToGive;
-    private int hoursBeforeWateringAgain;
-    //private int measuredMoistInPercent;
-    //private int moistLevelForWatering;
-
-
-
-    public Plant (String plantType, int moistureLevel, int specialNeeds) {
+   public Plant (String plantType, int moistureLevel, int specialNeeds) {
         this.plantType = plantType;
         this.moistureLevel = moistureLevel;
         this.specialNeeds = specialNeeds;
@@ -30,27 +27,9 @@ public class Plant {
         return specialNeeds;
     }
 
-//        public int getMoistLevelForWatering() {
-//        switch (moistureLevel) {
-//            case 1 -> {
-//                moistLevelForWatering = 5;
-//            }
-//            case 2 -> {
-//                moistLevelForWatering = 25;
-//            }
-//            case 3 -> {
-//                moistLevelForWatering = 50;
-//            }
-//            case 4 -> {
-//                moistLevelForWatering = 65;
-//            }
-//            case 5 -> {
-//                moistLevelForWatering = 85;
-//            }
-//            default -> moistLevelForWatering = 45;
-//        }
-//        return moistLevelForWatering;
-//    }
+    public LocalDateTime getLastTimePlantWasWatered() {
+        return lastTimePlantWasWatered;
+    }
 
     public String moistureLevelToString (int moistureLevel) {
         switch (moistureLevel) {
@@ -82,18 +61,6 @@ public class Plant {
         }
     }
 
-    public String displayPlantDetails() {
-        return
-                "\nPLANT\n" +
-                "Name: " + plantType + ".\n" +
-                "Moisture level: " + moistureLevelToString(moistureLevel) +".\n" +
-                "Special needs: " + specialNeedsToString(specialNeeds) + ".\n" +
-                //"Percentage of moist in your plant soil is " + measuredMoistInPercent + ".\n" +
-                "Your plant will be watered every " + hoursBeforeWateringAgain + " hours." +
-                "The water container needs a refill in "  + "hours."
-                ;
-    }
-
     public void setMoistureLevel(int moistureLevel) {
         this.moistureLevel = moistureLevel;
     }
@@ -102,11 +69,8 @@ public class Plant {
         this.specialNeeds = specialNeeds;
     }
 
-       /*public void setNewMoistureLevel(int moistureLevel) {
-        this.moistureLevel = moistureLevel(newMoisturelevel);
+    public void setLastTimePlantWasWatered(LocalDateTime lastTimePlantWasWatered) {
+        this.lastTimePlantWasWatered = lastTimePlantWasWatered;
     }
 
-    public void setNewSpecialNeeds(int newSpecialNeeds) {
-        this.specialNeeds = specialNeeds(newSpecialNeeds);
-    }*/
-}
+   }

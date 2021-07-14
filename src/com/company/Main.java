@@ -3,28 +3,28 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        //MoistMeter moistMeter = new MoistMeter();
 
         PlantFactory factory = new PlantFactory();
         ListOfPlants listOfPlants = new ListOfPlants();
         Plant plant = factory.createNewPlant(listOfPlants);
 
-        //FrequencyCalculator frequencyCalculator = new FrequencyCalculator(plant);
         AmountOfWaterCalculator amountOfWaterCalculator = new AmountOfWaterCalculator();
+        FrequencyCalculator frequencyCalculator = new FrequencyCalculator();
+        WaterGiver waterGiver = new WaterGiver(amountOfWaterCalculator , frequencyCalculator);
 
-        WaterGiver watergiver = new WaterGiver();
-
-        //frequencyCalculator.getHoursBeforeWateringAgain();
         amountOfWaterCalculator.getAmountOfWaterToGive(plant);
 
         listOfPlants.getListOfPlants();
         listOfPlants.findPlant(plant.getPlantType());
         //listOfPlants.displayArrayListOfPlants();
 
-        watergiver.waterGiverTimer();
+        for (Plant p : listOfPlants.getListOfPlants()) {
+            if (waterGiver.needsWater(p)){
+                waterGiver.giveWater(p);
+            }
+        }
 
-
-        System.out.println(plant.displayPlantDetails());
+        System.out.println(factory.displayPlantDetails(plant, frequencyCalculator, amountOfWaterCalculator, waterGiver));
     }
 
 }

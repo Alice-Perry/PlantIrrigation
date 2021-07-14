@@ -1,56 +1,48 @@
 package com.company;
-import java.util.Timer;
-import java.util.TimerTask;
+
+import java.time.LocalDateTime;
 
 public class WaterGiver {
+    private AmountOfWaterCalculator amountOfWaterCalculator;
+    private FrequencyCalculator frequencyCalculator;
+    int reservoir = 7000;
+    int emptyReservoir;
 
-    //private MoistLevelDecreaser moistLevelDecreaser = new MoistLevelDecreaser();
-    private int amountOfWaterToGive;
-       private boolean turnWaterOn = false;
-    //private int measuredMoistInPercent = getMeasuredMoistInPercent();
-    //private int decreaser = moistLevelDecreaser.decreaseMoistLevel();
-    //private int minimum =  getMoistLevelForWatering();
 
-    public int getAmountOfWaterToGive(Plant plant, AmountOfWaterCalculator calculator) {
-       return amountOfWaterToGive = calculator.getAmountOfWaterToGive(plant);
+    public WaterGiver(AmountOfWaterCalculator amountOfWaterCalculator, FrequencyCalculator frequencyCalculator) {
+        this.amountOfWaterCalculator = amountOfWaterCalculator;
+        this.frequencyCalculator = frequencyCalculator;
     }
 
-    // fake moist level measured by the moist meter. Gives a random moist level between min and max.
-//    public int getMeasuredMoistInPercent() {
-//        int min = 5;
-//        int max = 95;
-//        return measuredMoistInPercent = (int)(Math.random()*(max-min+1)+min);
-//    }
+    public int getAmountOfWaterToGive(Plant plant) {
+       return amountOfWaterCalculator.getAmountOfWaterToGive(plant);
+    }
 
-//    public void waterGiverTimer() {
-//        Timer timer = new Timer();
-//        TimerTask task = new TimerTask() {
-//        public void run() {
-//            //FrequencyCalculator frequencyCalculator = frequencyCalculator.getAmountOfWaterToGive();
-//            if (decreaser > minimum) {
-//                System.out.println("The moist percentage of your plant soil is " + decreaser + "%.");
-//            } else {
-//                System.out.println("The plant will now be watered.");
-//                System.out.println("Next watering moment wil be in " + amountOfWaterToGive + " hours.");
-//                timer.cancel();
-//            }
-//            decreaser--;
-//            }
-//        };
-//        timer.scheduleAtFixedRate(task, 0, 1000);
-//    }
-
-    public boolean turnWaterOn() {
-        if (amountOfWaterToGive <= minimum) {
-            turnWaterOn = true;
+    public boolean needsWater(Plant plant) {
+        long hoursBeforeWateringAgain = frequencyCalculator.getNextWatering(plant);
+        boolean needsWater;
+        if (hoursBeforeWateringAgain == 0) {
+            needsWater = true;
+            System.out.println("Your plant needs water.");
         }
         else{
-            turnWaterOn = false;
+            needsWater = false;
+            System.out.println("Your plant does not need water.");
         }
-        return turnWaterOn;
+        return needsWater;
     }
 
-    //public int getWaterRefill(){
+    public void giveWater(Plant plant){
+        reservoir = reservoir - getAmountOfWaterToGive(plant);
+        plant.setLastTimePlantWasWatered(LocalDateTime.now());
+    }
+    public void setEmptyReservoir(int empty){
+        this.emptyReservoir = empty;
+            }
 
-    //}
+    public int getEmpty() {
+        return empty;
+    }
+
+    int empty = reservoir % getAmountOfWaterToGive(plant);
 }

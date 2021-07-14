@@ -4,7 +4,12 @@ public class AmountOfWaterCalculator {
     int multiplier;
     int amountOfWaterToGive;
     int minMoistLevel;
-    int hoursBeforeWateringAgain; // DEZE MOET NOG UITGEREKEND. GEEN IDEE HOE!
+    int hoursBeforeWateringAgain;
+
+    public int getHoursBeforeWateringAgain(FrequencyCalculator frequencyCalculator, Plant plant) {
+        hoursBeforeWateringAgain =  frequencyCalculator.calculateFrequency(plant);
+        return hoursBeforeWateringAgain;
+    }
 
     public int getAmountOfWaterToGive (Plant plant) {
         switch (plant.getMoistureLevel()) {

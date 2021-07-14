@@ -3,17 +3,12 @@ package com.company;
 import java.util.Scanner;
 
 public class PlantFactory {
-    FrequencyCalculator frequencyCalculator;
-    AmountOfWaterCalculator amountOfWaterCalculator;
 
-   // public PlantFactory(FrequencyCalculator frequencyCalculator, MoistureLevelCalculator moistureLevelCalculator){
-    //    this.frequencyCalculator = frequencyCalculator;
-   //     this. moistureLevelCalculator = moistureLevelCalculator;
-    //    }
-
-    public Plant createNewPlant(ListOfPlants listOfPlants) {
+       public Plant createNewPlant(ListOfPlants listOfPlants) {
         Scanner scanner = new Scanner(System.in);
         String plantType = getPlantType(scanner);
+
+       // DIT MOET ERGENS ANDERS!
         Plant plant = listOfPlants.findPlant(plantType);
         if (plant !=null) {
             return plant;
@@ -54,5 +49,19 @@ public class PlantFactory {
             specialNeeds = scanner.nextInt();
         } while (specialNeeds == 0);
         return specialNeeds;
+    }
+
+    public String displayPlantDetails(Plant plant , FrequencyCalculator frequencyCalculator , AmountOfWaterCalculator amountOfWaterCalculator , WaterGiver waterGiver) {
+        return
+         "\nPLANT\n" +
+          "Name: " + plant.getPlantType() + ".\n" +
+          "Moisture level: " + plant.moistureLevelToString(plant.getMoistureLevel()) +".\n" +
+          "Special needs: " + plant.specialNeedsToString(plant.getSpecialNeeds()) + ".\n" +
+          "Your plant will be watered: " + amountOfWaterCalculator.getAmountOfWaterToGive(plant) + " milliliter for every: "
+                     + frequencyCalculator.calculateFrequency(plant) + " hours" + ".\n" +
+          "The status of the water giver is: " + waterGiver.needsWater(plant) + ".\n" +
+          "Your next watering will be in: " + frequencyCalculator.getNextWatering(plant) + " hours" + ".\n" +
+          "The water container still contains "  + waterGiver.reservoir + " milliliter of water" + ".\n" +
+          "It needs a refill in "  + waterGiver.emptyReservoir + "hours.";
     }
 }
