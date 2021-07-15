@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 public class WaterGiver {
     private AmountOfWaterCalculator amountOfWaterCalculator;
     private FrequencyCalculator frequencyCalculator;
-    int reservoir = 7000;
-    int emptyReservoir;
+    int reservoir = 3000;
+    int emptyInHours;
 
 
     public WaterGiver(AmountOfWaterCalculator amountOfWaterCalculator, FrequencyCalculator frequencyCalculator) {
@@ -36,13 +36,15 @@ public class WaterGiver {
         reservoir = reservoir - getAmountOfWaterToGive(plant);
         plant.setLastTimePlantWasWatered(LocalDateTime.now());
     }
-    public void setEmptyReservoir(int empty){
-        this.emptyReservoir = empty;
-            }
 
-    public int getEmpty() {
-        return empty;
+    public int getEmptyInHours(Plant plant) {
+        int amount = getAmountOfWaterToGive(plant);
+        int time = frequencyCalculator.calculateFrequency(plant);
+
+        return ((reservoir / amount) * (time / 24)) + (time/24);
     }
 
-    int empty = reservoir % getAmountOfWaterToGive(plant);
+    public void setEmptyInHours(int empty){
+        this.emptyInHours = empty;
+    }
 }

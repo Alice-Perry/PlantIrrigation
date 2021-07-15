@@ -1,24 +1,24 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PlantFactory {
 
-       public Plant createNewPlant(ListOfPlants listOfPlants) {
-        Scanner scanner = new Scanner(System.in);
-        String plantType = getPlantType(scanner);
+    public Plant createNewPlant(LookUpListOfPlants lookUpListOfPlants) {
+    Scanner scanner = new Scanner(System.in);
+    String plantType = getPlantType(scanner);
 
-       // DIT MOET ERGENS ANDERS!
-        Plant plant = listOfPlants.findPlant(plantType);
+    Plant plant = lookUpListOfPlants.findPlant(plantType);
         if (plant !=null) {
-            return plant;
-        }
+        return plant;
+    }
 
-        int moistureLevel = getMoistureLevel(scanner);
-        int specialNeeds = getSpecialNeeds(scanner);
+    int moistureLevel = getMoistureLevel(scanner);
+    int specialNeeds = getSpecialNeeds(scanner);
 
         return new Plant(plantType, moistureLevel, specialNeeds);
-    }
+}
 
     private String getPlantType(Scanner scanner) {
         System.out.println("What is the type of plant?");
@@ -57,11 +57,10 @@ public class PlantFactory {
           "Name: " + plant.getPlantType() + ".\n" +
           "Moisture level: " + plant.moistureLevelToString(plant.getMoistureLevel()) +".\n" +
           "Special needs: " + plant.specialNeedsToString(plant.getSpecialNeeds()) + ".\n" +
-          "Your plant will be watered: " + amountOfWaterCalculator.getAmountOfWaterToGive(plant) + " milliliter for every: "
+          "Your plant will be watered " + amountOfWaterCalculator.getAmountOfWaterToGive(plant) + " milliliter for every "
                      + frequencyCalculator.calculateFrequency(plant) + " hours" + ".\n" +
-          "The status of the water giver is: " + waterGiver.needsWater(plant) + ".\n" +
-          "Your next watering will be in: " + frequencyCalculator.getNextWatering(plant) + " hours" + ".\n" +
+          "Your next watering will be in: " + (frequencyCalculator.getNextWatering(plant)/24) + " days and " + + (frequencyCalculator.getNextWatering(plant)/24) + " hours" + ".\n" +
           "The water container still contains "  + waterGiver.reservoir + " milliliter of water" + ".\n" +
-          "It needs a refill in "  + waterGiver.emptyReservoir + "hours.";
+          "It needs a refill in "  + waterGiver.getEmptyInHours(plant)+ " days.";
     }
 }

@@ -1,7 +1,6 @@
 package com.company;
 
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 
 public class Plant {
     private String plantType;
@@ -61,6 +60,10 @@ public class Plant {
         }
     }
 
+    public void setLastTimePlantWasWatered(LocalDateTime lastTimePlantWasWatered) {
+        this.lastTimePlantWasWatered = lastTimePlantWasWatered;
+    }
+
     public void setMoistureLevel(int moistureLevel) {
         this.moistureLevel = moistureLevel;
     }
@@ -68,9 +71,4 @@ public class Plant {
     public void setSpecialNeeds(int specialNeeds) {
         this.specialNeeds = specialNeeds;
     }
-
-    public void setLastTimePlantWasWatered(LocalDateTime lastTimePlantWasWatered) {
-        this.lastTimePlantWasWatered = lastTimePlantWasWatered;
-    }
-
-   }
+}

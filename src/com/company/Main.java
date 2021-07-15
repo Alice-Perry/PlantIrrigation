@@ -1,12 +1,14 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
 
         PlantFactory factory = new PlantFactory();
-        ListOfPlants listOfPlants = new ListOfPlants();
-        Plant plant = factory.createNewPlant(listOfPlants);
+        LookUpListOfPlants lookUpListOfPlants = new LookUpListOfPlants();
+        Plant plant = factory.createNewPlant(lookUpListOfPlants);
 
         AmountOfWaterCalculator amountOfWaterCalculator = new AmountOfWaterCalculator();
         FrequencyCalculator frequencyCalculator = new FrequencyCalculator();
@@ -14,17 +16,12 @@ public class Main {
 
         amountOfWaterCalculator.getAmountOfWaterToGive(plant);
 
-        listOfPlants.getListOfPlants();
-        listOfPlants.findPlant(plant.getPlantType());
-        //listOfPlants.displayArrayListOfPlants();
+        lookUpListOfPlants.findPlant(plant.getPlantType());
 
-        for (Plant p : listOfPlants.getListOfPlants()) {
-            if (waterGiver.needsWater(p)){
-                waterGiver.giveWater(p);
-            }
+        if (waterGiver.needsWater(plant)){
+                waterGiver.giveWater(plant);
         }
 
         System.out.println(factory.displayPlantDetails(plant, frequencyCalculator, amountOfWaterCalculator, waterGiver));
     }
-
 }

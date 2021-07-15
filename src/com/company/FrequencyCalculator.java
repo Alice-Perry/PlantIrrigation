@@ -8,11 +8,11 @@ public class FrequencyCalculator {
 
     public int calculateFrequency(Plant plant) {
         if (plant.getSpecialNeeds() == 1) {
-            hoursBeforeWateringAgain = 6;
-        } else if (plant.getSpecialNeeds() == 2) {
             hoursBeforeWateringAgain = 24;
+        } else if (plant.getSpecialNeeds() == 2) {
+            hoursBeforeWateringAgain = 50;
         } else {
-            hoursBeforeWateringAgain = 48;
+            hoursBeforeWateringAgain = 96;
         }
         return hoursBeforeWateringAgain;
     }
@@ -20,9 +20,8 @@ public class FrequencyCalculator {
     public long getNextWatering(Plant plant) {
         int frequency = hoursBeforeWateringAgain;
         long hours = Duration.between(plant.getLastTimePlantWasWatered(), LocalDateTime.now()).toHours();
-        long hoursBeforeWateringAgain = frequency - hours;
 
-        return hoursBeforeWateringAgain;
+        return frequency - hours;
     }
 }
 
