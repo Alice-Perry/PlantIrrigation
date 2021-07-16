@@ -1,6 +1,8 @@
 package com.company;
 
 import java.time.LocalDateTime;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class WaterGiver {
     private AmountOfWaterCalculator amountOfWaterCalculator;
@@ -21,14 +23,7 @@ public class WaterGiver {
     public boolean needsWater(Plant plant) {
         long hoursBeforeWateringAgain = frequencyCalculator.getNextWatering(plant);
         boolean needsWater;
-        if (hoursBeforeWateringAgain == 0) {
-            needsWater = true;
-            System.out.println("Your plant needs water.");
-        }
-        else{
-            needsWater = false;
-            System.out.println("Your plant does not need water.");
-        }
+        needsWater = hoursBeforeWateringAgain <= 0;
         return needsWater;
     }
 

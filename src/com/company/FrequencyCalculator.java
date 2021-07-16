@@ -19,7 +19,7 @@ public class FrequencyCalculator {
 
     public long getNextWatering(Plant plant) {
         int frequency = hoursBeforeWateringAgain;
-        long hours = Duration.between(plant.getLastTimePlantWasWatered(), LocalDateTime.now()).toHours();
+        long hours = Duration.between(plant.getLastTimePlantWasWatered(), LocalDateTime.now()).toSeconds(); // Seconden ipv uren, anders moeten we zo lang wachten.
 
         return frequency - hours;
     }
