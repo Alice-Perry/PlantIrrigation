@@ -13,14 +13,6 @@ public class LookUpListOfPlants {
         lookUpListOfPlants.add(new Plant("Orchid" , 1, 2));
     }
 
-    public void setLookUpListOfPlants(ArrayList<Plant> lookUpListOfPlants) {
-        this.lookUpListOfPlants = lookUpListOfPlants;
-    }
-
-    public ArrayList<Plant> getLookUpListOfPlants() {
-        return lookUpListOfPlants;
-    }
-
     public Plant findPlant(String plantType) {
         for (Plant plant : lookUpListOfPlants) {
             if (plant.getPlantType().equalsIgnoreCase(plantType)) {

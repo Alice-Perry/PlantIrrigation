@@ -8,24 +8,24 @@ public class AmountOfWaterCalculator {
     public int getAmountOfWaterToGive (Plant plant) {
         switch (plant.getMoistureLevel()) {
             case 1 -> {
-                amountOfWaterToGive = 50;
-                multiplier = 3;
+                amountOfWaterToGive = 100;
+                multiplier = 2;
             }
             case 2 -> {
-                amountOfWaterToGive = 100;
-                multiplier = 4;
+                amountOfWaterToGive = 150;
+                multiplier = 3;
             }
             case 3 -> {
                 amountOfWaterToGive = 300;
-                multiplier = 2;
+                multiplier = 3;
             }
             case 4 -> {
-                amountOfWaterToGive = 350;
-                multiplier = 2;
+                amountOfWaterToGive = 400;
+                multiplier = 3;
             }
             case 5 -> {
-                amountOfWaterToGive = 350;
-                multiplier = 3;
+                amountOfWaterToGive = 600;
+                multiplier = 4;
             }
             default -> amountOfWaterToGive = 300;
         }
