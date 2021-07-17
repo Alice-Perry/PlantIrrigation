@@ -5,7 +5,7 @@ public class AmountOfWaterCalculator {
     private int amountOfWaterToGive;
     int hoursBeforeWateringAgain;
 
-    public int getAmountOfWaterToGive (Plant plant) {
+    public int calculateAmountOfWater(Plant plant) {
         switch (plant.getMoistureLevel()) {
             case 1 -> {
                 amountOfWaterToGive = 100;

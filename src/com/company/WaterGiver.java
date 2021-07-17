@@ -13,7 +13,7 @@ public class WaterGiver {
     }
 
     public int getAmountOfWaterToGive(Plant plant) {
-       return amountOfWaterCalculator.getAmountOfWaterToGive(plant);
+       return amountOfWaterCalculator.calculateAmountOfWater(plant);
     }
 
     public boolean needsWater(Plant plant) {
